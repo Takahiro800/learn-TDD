@@ -1,0 +1,12 @@
+version: '3'
+services:
+  ruby:
+    container_name: 'ruby'
+    restart: always
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    working_dir: '/root/app/src'
+    tty: true
+    volumes:
+      - ./app:/root/app
