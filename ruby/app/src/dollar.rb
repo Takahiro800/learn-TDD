@@ -7,5 +7,6 @@ class Dollar
 
   def times(multiplier)
     @amount *= multiplier
+    self
   end
 end
