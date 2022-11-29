@@ -12,19 +12,11 @@ require './dollar'
 
 RSpec.describe Dollar do
   # FIX: 必要なデータを切り出して準備する
-  it '$5 * 2 = $10' do
+  it '#times' do
     five = Dollar.new(5)
-    # five.times(2)
-    # expect(five.amount).to eq 10
 
-    # five.times(3)
-    # expect(five.amount).to eq 15
-
-    product = five.times(2)
-    expect(product.amount).to eq 10
-
-    product = five.times(3)
-    expect(product.amount).to eq 15
+    expect(five.times(2).eql?(Dollar.new(10))).to be_truthy
+    expect(five.times(3).eql?(Dollar.new(15))).to be_truthy
   end
 
   describe '#equals' do
