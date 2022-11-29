@@ -5,8 +5,10 @@ require './dollar'
 # TODO amountをprivateにする
 # DONE Dollarの副作用どうする？
 # TODO Moneyの丸め処理どうする?
-# TODO equals()
+# DONE equals()
 # TODO hash_code()
+# TODO nullとの等価性比較
+# TODO 他のオブジェクトとの等価比較性
 
 RSpec.describe Dollar do
   # FIX: 必要なデータを切り出して準備する
@@ -27,7 +29,8 @@ RSpec.describe Dollar do
 
   describe '#equals' do
     it '#equals' do
-      expect(Dollar.new(5).equals?(Dollar.new(5)))
+      expect(Dollar.new(5).equals?(Dollar.new(5))).to be_truthy
+      expect(Dollar.new(5).equals?(Dollar.new(6))).to be_falsey
     end
   end
 end
