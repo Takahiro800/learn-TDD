@@ -1,7 +1,10 @@
-class Dollar
+require './money'
+
+class Dollar < Money
   attr_reader :amount
 
   def initialize(amount)
+    # CHECK superを使う場合は Effective Ruby(p.25~)参照する
     @amount = amount
   end
 
