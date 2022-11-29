@@ -12,10 +12,11 @@ require './franc'
 # TODO 他のオブジェクトとの等価比較性
 # DONE 5CHF * 2 = 10CHF
 # TODO DollarとFrancの重複
-# TODO equalsの一般化
+# DONE equalsの一般化
 # TODO　timesの一般化
+# TODO　FrancとDollarを比較する
 
-RSpec.describe Dollar do
+RSpec.describe Money do
   # FIX: 必要なデータを切り出して準備する
   it '#times' do
     five = Dollar.new(5)
@@ -26,8 +27,13 @@ RSpec.describe Dollar do
 
   describe '#equals' do
     it '#equals' do
+      # Dollar
       expect(Dollar.new(5).equals?(Dollar.new(5))).to be_truthy
       expect(Dollar.new(5).equals?(Dollar.new(6))).to be_falsey
+
+      # Franc
+      expect(Franc.new(5).equals?(Franc.new(5))).to be_truthy
+      expect(Franc.new(5).equals?(Franc.new(6))).to be_falsey
     end
   end
 end

@@ -10,4 +10,9 @@ class Money
   def equals?(money)
     amount == money.amount
   end
+
+  # NOTE: Effective Ruby p.43
+  def eql?(other)
+    amount.eql?(other.amount)
+  end
 end
