@@ -26,14 +26,18 @@ RSpec.describe Money do
   end
 
   describe '#equals' do
-    it '#equals' do
-      # Dollar
+    it Dollar do
       expect(Dollar.new(5).equals?(Dollar.new(5))).to be_truthy
       expect(Dollar.new(5).equals?(Dollar.new(6))).to be_falsey
+    end
 
-      # Franc
+    it Franc do
       expect(Franc.new(5).equals?(Franc.new(5))).to be_truthy
       expect(Franc.new(5).equals?(Franc.new(6))).to be_falsey
+    end
+
+    it 'FrancとDollarの比較' do
+      expect(Franc.new(5).equals?(Dollar.new(5))).to be_falsey
     end
   end
 end
