@@ -1,6 +1,4 @@
 class Franc < Money
-  attr_reader :currency
-
   def initialize(amount)
     super
     @currency = 'CHF'

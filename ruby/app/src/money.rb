@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class Money
-  attr_reader :amount
+  attr_reader :amount, :currency
 
   def initialize(amount)
     @amount = amount
@@ -18,15 +18,6 @@ class Money
     amount.eql?(other.amount)
   end
 
-  def currency
-    # NOTE: 抽象メソッドを自作
-    currency_proc
-  end
-
-  def currency_proc
-    raise 'call abstract!'
-  end
-
   def self.dollar(amount)
     Dollar.new(amount)
   end
@@ -34,4 +25,13 @@ class Money
   def self.franc(amount)
     Franc.new(amount)
   end
+
+  # def currency
+  #   # NOTE: 抽象メソッドを自作
+  #   currency_proc
+  # end
+
+  # def currency_proc
+  #   raise 'call abstract!'
+  # end
 end

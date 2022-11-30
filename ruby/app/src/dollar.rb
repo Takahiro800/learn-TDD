@@ -1,8 +1,6 @@
 require './money'
 
 class Dollar < Money
-  attr_reader :currency
-
   def initialize(amount)
     super
     @currency = 'USD'
