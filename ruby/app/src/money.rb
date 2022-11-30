@@ -7,12 +7,14 @@ class Money
     @amount = amount
   end
 
-  def equals?(money)
-    amount == money.amount
+  def equals?(other)
+    # CHECK モデルにクラスが登場するのは不吉な匂いがする
+    amount == other.amount && instance_of?(other.class)
   end
 
   # NOTE: Effective Ruby p.43
   def eql?(other)
+    # amount.eql?(other.amount)
     amount.eql?(other.amount)
   end
 end

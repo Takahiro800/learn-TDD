@@ -14,7 +14,8 @@ require './franc'
 # TODO DollarとFrancの重複
 # DONE equalsの一般化
 # TODO　timesの一般化
-# TODO　FrancとDollarを比較する
+# DONE　FrancとDollarを比較する
+# TODO 通貨の概念
 
 RSpec.describe Money do
   # FIX: 必要なデータを切り出して準備する
