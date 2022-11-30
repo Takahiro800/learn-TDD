@@ -19,11 +19,11 @@ class Money
   end
 
   def self.dollar(amount)
-    Dollar.new(amount)
+    Dollar.new(amount, 'USD')
   end
 
   def self.franc(amount)
-    Franc.new(amount)
+    Franc.new(amount, 'CHF')
   end
 
   # def currency

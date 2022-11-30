@@ -1,3 +1,4 @@
+require './money'
 require './dollar'
 require './franc'
 

@@ -1,12 +1,10 @@
-require './money'
-
 class Dollar < Money
-  def initialize(amount)
-    super
-    @currency = 'USD'
+  def initialize(amount, currency)
+    super(amount)
+    @currency = currency
   end
 
   def times(multiplier)
-    Dollar.new(amount * multiplier)
+    Money.dollar(amount * multiplier)
   end
 end
