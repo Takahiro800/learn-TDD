@@ -23,32 +23,32 @@ RSpec.describe Money do
     # NOTE: Factory MEthodを定義(p.48)
     five = Money.dollar(5)
 
-    expect(five.times(2).eql?(Dollar.new(10))).to be_truthy
-    expect(five.times(3).eql?(Dollar.new(15))).to be_truthy
+    expect(five.times(2).eql?(Money.dollar(10))).to be_truthy
+    expect(five.times(3).eql?(Money.dollar(15))).to be_truthy
   end
 
   describe '#equals' do
     it Dollar do
-      expect(Dollar.new(5).equals?(Dollar.new(5))).to be_truthy
-      expect(Dollar.new(5).equals?(Dollar.new(6))).to be_falsey
+      expect(Money.dollar(5).equals?(Money.dollar(5))).to be_truthy
+      expect(Money.dollar(5).equals?(Money.dollar(6))).to be_falsey
     end
 
     it Franc do
-      expect(Franc.new(5).equals?(Franc.new(5))).to be_truthy
-      expect(Franc.new(5).equals?(Franc.new(6))).to be_falsey
+      expect(Money.franc(5).equals?(Money.franc(5))).to be_truthy
+      expect(Money.franc(5).equals?(Money.franc(6))).to be_falsey
     end
 
     it 'FrancとDollarの比較' do
-      expect(Franc.new(5).equals?(Dollar.new(5))).to be_falsey
+      expect(Money.franc(5).equals?(Money.dollar(5))).to be_falsey
     end
   end
 end
 
 RSpec.describe Franc do
   it '#times' do
-    five = Franc.new(5)
+    five = Money.franc(5)
 
-    expect(five.times(2).eql?(Franc.new(10))).to be_truthy
-    expect(five.times(3).eql?(Franc.new(15))).to be_truthy
+    expect(five.times(2).eql?(Money.franc(10))).to be_truthy
+    expect(five.times(3).eql?(Money.franc(15))).to be_truthy
   end
 end
