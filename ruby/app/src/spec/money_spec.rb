@@ -20,7 +20,8 @@ require './franc'
 RSpec.describe Money do
   # FIX: 必要なデータを切り出して準備する
   it '#times' do
-    five = Dollar.new(5)
+    # NOTE: Factory MEthodを定義(p.48)
+    five = Money.dollar(5)
 
     expect(five.times(2).eql?(Dollar.new(10))).to be_truthy
     expect(five.times(3).eql?(Dollar.new(15))).to be_truthy

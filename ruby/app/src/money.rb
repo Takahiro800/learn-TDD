@@ -17,4 +17,8 @@ class Money
     # amount.eql?(other.amount)
     amount.eql?(other.amount)
   end
+
+  def self.dollar(amount)
+    Dollar.new(amount)
+  end
 end
