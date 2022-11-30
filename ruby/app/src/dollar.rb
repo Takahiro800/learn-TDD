@@ -1,11 +1,14 @@
 require './money'
 
 class Dollar < Money
-  def times(multiplier)
-    Dollar.new(amount * multiplier)
+  attr_reader :currency
+
+  def initialize(amount)
+    super
+    @currency = 'USD'
   end
 
-  def currency
-    'USD'
+  def times(multiplier)
+    Dollar.new(amount * multiplier)
   end
 end
