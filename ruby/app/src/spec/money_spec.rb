@@ -16,6 +16,7 @@ require './franc'
 # TODO　timesの一般化
 # DONE　FrancとDollarを比較する
 # TODO 通貨の概念
+# TODO Franc#timesのテストを削除する?
 
 RSpec.describe Money do
   # FIX: 必要なデータを切り出して準備する
@@ -40,6 +41,15 @@ RSpec.describe Money do
 
     it 'FrancとDollarの比較' do
       expect(Money.franc(5).equals?(Money.dollar(5))).to be_falsey
+    end
+  end
+
+  describe '#currency' do
+    it 'Dollar' do
+      expect(Money.dollar(1).currency).to eq 'USD'
+    end
+    it 'Franc' do
+      expect(Money.franc(1).currency).to eq 'CHF'
     end
   end
 end
