@@ -1,10 +1,10 @@
 # frozen_string_literal: true
-
 class Money
   attr_reader :amount, :currency
 
-  def initialize(amount)
+  def initialize(amount, currency)
     @amount = amount
+    @currency = currency
   end
 
   def equals?(other)

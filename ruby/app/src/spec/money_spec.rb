@@ -19,6 +19,7 @@ require './franc'
 # TODO 通貨の概念
 # TODO Franc#timesのテストを削除する?
 
+# rubocop:disable Metrics/BlockLength
 RSpec.describe Money do
   # FIX: 必要なデータを切り出して準備する
   it '#times' do
@@ -63,3 +64,4 @@ RSpec.describe Franc do
     expect(five.times(3).eql?(Money.franc(15))).to be_truthy
   end
 end
+# rubocop:enable Metrics/BlockLength

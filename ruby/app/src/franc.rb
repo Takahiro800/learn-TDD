@@ -1,10 +1,12 @@
+# frozen_string_literal: true
+
 class Franc < Money
-  def initialize(amount, currency)
-    super(amount)
-    @currency = currency
-  end
+  # def initialize(amount, currency)
+  #   super(amount, currency)
+  #   # @currency = currency
+  # end
 
   def times(multiplier)
-    Money.franc(amount * multiplier)
+    Money.new(amount * multiplier, currency)
   end
 end
