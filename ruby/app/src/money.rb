@@ -27,7 +27,7 @@ class Money
   end
 
   def times(multiplier)
-    null
+    Money.new(amount * multiplier, currency)
   end
 
   # def currency
