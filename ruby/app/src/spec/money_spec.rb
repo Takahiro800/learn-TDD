@@ -26,8 +26,8 @@ RSpec.describe Money do
     # NOTE: Factory MEthodを定義(p.48)
     five = Money.dollar(5)
 
-    expect(five.times(2).eql?(Money.dollar(10))).to be_truthy
-    expect(five.times(3).eql?(Money.dollar(15))).to be_truthy
+    expect(five.times(2).equals?(Money.dollar(10))).to be_truthy
+    expect(five.times(3).equals?(Money.dollar(15))).to be_truthy
   end
 
   describe '#equals' do
@@ -60,8 +60,15 @@ RSpec.describe Franc do
   it '#times' do
     five = Money.franc(5)
 
-    expect(five.times(2).eql?(Money.franc(10))).to be_truthy
-    expect(five.times(3).eql?(Money.franc(15))).to be_truthy
+    expect(five.times(2).equals?(Money.franc(10))).to be_truthy
+    expect(five.times(3).equals?(Money.franc(15))).to be_truthy
+  end
+end
+
+RSpec.describe '#currency' do
+  it Dollar do
+    expect('USD').to eq Money.dollar(1).currency
+    expect('CHF').to eq Money.franc(1).currency
   end
 end
 # rubocop:enable Metrics/BlockLength

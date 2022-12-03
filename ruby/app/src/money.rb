@@ -14,7 +14,6 @@ class Money
 
   # NOTE: Effective Ruby p.43
   def eql?(other)
-    # amount.eql?(other.amount)
     amount.eql?(other.amount)
   end
 
@@ -24,6 +23,10 @@ class Money
 
   def self.franc(amount)
     Franc.new(amount, 'CHF')
+  end
+
+  def times(multiplier)
+    null
   end
 
   # def currency
