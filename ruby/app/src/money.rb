@@ -9,7 +9,8 @@ class Money
 
   def equals?(other)
     # CHECK モデルにクラスが登場するのは不吉な匂いがする
-    amount == other.amount && instance_of?(other.class)
+    # NOTE ==とeql?の違い (Effective Ruby p.23)
+    amount == other.amount && currency == other.currency
   end
 
   # NOTE: Effective Ruby p.43

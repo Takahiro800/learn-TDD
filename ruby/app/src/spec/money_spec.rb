@@ -44,6 +44,10 @@ RSpec.describe Money do
     it 'FrancとDollarの比較' do
       expect(Money.franc(5).equals?(Money.dollar(5))).to be_falsey
     end
+
+    it 'Different Class Equality' do
+      expect(Money.new(5, 'CHF').equals?(Franc.new(5, 'CHF'))).to be_truthy
+    end
   end
 
   describe '#currency' do
