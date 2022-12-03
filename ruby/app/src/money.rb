@@ -9,6 +9,8 @@ class Money
 
   def equals?(other)
     # CHECK モデルにクラスが登場するのは不吉な匂いがする
+    # NOTE instance_of? / is_a? の違い
+    # レシーバのみの評価　or スーパークラスも評価
     # NOTE ==とeql?の違い (Effective Ruby p.23)
     amount == other.amount && currency == other.currency
   end
