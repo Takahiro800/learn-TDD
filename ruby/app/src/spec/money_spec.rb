@@ -22,32 +22,27 @@ require './franc'
 # rubocop:disable Metrics/BlockLength
 RSpec.describe Money do
   # FIX: 必要なデータを切り出して準備する
-  it '#times' do
-    # NOTE: Factory MEthodを定義(p.48)
-    five = Money.dollar(5)
+  describe '#times' do
+    it 'dollar' do
+      # NOTE: Factory MEthodを定義(p.48)
+      five = Money.dollar(5)
 
-    expect(five.times(2).equals?(Money.dollar(10))).to be_truthy
-    expect(five.times(3).equals?(Money.dollar(15))).to be_truthy
+      expect(five.times(2).equals?(Money.dollar(10))).to be_truthy
+      expect(five.times(3).equals?(Money.dollar(15))).to be_truthy
+    end
+    it '#times' do
+      five = Money.franc(5)
+
+      expect(five.times(2).equals?(Money.franc(10))).to be_truthy
+      expect(five.times(3).equals?(Money.franc(15))).to be_truthy
+    end
   end
 
-  describe '#equals' do
-    it Dollar do
-      expect(Money.dollar(5).equals?(Money.dollar(5))).to be_truthy
-      expect(Money.dollar(5).equals?(Money.dollar(6))).to be_falsey
-    end
+  it '#equals' do
+    expect(Money.dollar(5).equals?(Money.dollar(5))).to be_truthy
+    expect(Money.dollar(5).equals?(Money.dollar(6))).to be_falsey
 
-    it Franc do
-      expect(Money.franc(5).equals?(Money.franc(5))).to be_truthy
-      expect(Money.franc(5).equals?(Money.franc(6))).to be_falsey
-    end
-
-    it 'FrancとDollarの比較' do
-      expect(Money.franc(5).equals?(Money.dollar(5))).to be_falsey
-    end
-
-    it 'Different Class Equality' do
-      expect(Money.new(5, 'CHF').equals?(Franc.new(5, 'CHF'))).to be_truthy
-    end
+    expect(Money.franc(5).equals?(Money.dollar(5))).to be_falsey
   end
 
   describe '#currency' do
@@ -59,20 +54,3 @@ RSpec.describe Money do
     end
   end
 end
-
-RSpec.describe Franc do
-  it '#times' do
-    five = Money.franc(5)
-
-    expect(five.times(2).equals?(Money.franc(10))).to be_truthy
-    expect(five.times(3).equals?(Money.franc(15))).to be_truthy
-  end
-end
-
-RSpec.describe '#currency' do
-  it Dollar do
-    expect('USD').to eq Money.dollar(1).currency
-    expect('CHF').to eq Money.franc(1).currency
-  end
-end
-# rubocop:enable Metrics/BlockLength
