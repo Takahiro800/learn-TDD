@@ -3,6 +3,7 @@ require './dollar'
 require './franc'
 
 # TODO: $5 + 10CHF = $10(レートが2:1の場合)
+# TODO: $5 + $5 = $10
 # DONE $5 * 2 = $10
 # DONE amountをprivateにする
 # DONE Dollarの副作用どうする？
@@ -51,6 +52,13 @@ RSpec.describe Money do
     end
     it 'Franc' do
       expect(Money.franc(1).currency).to eq 'CHF'
+    end
+  end
+
+  describe 'Addition' do
+    it '$5 + $5 = $10' do
+      sum = Money.dollar(5).plus(Money.dollar(5))
+      expect(Money.dollar(10).equals?(sum)).to be_truthy
     end
   end
 end

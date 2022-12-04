@@ -32,6 +32,10 @@ class Money
     Money.new(amount * multiplier, currency)
   end
 
+  def plus(addend)
+    Money.new(amount + addend.amount, currency)
+  end
+
   # def currency
   #   # NOTE: 抽象メソッドを自作
   #   currency_proc
