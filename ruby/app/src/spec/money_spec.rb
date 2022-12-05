@@ -71,8 +71,16 @@ RSpec.describe Money do
       five = Money.dollar(5)
       result = five.plus(five)
 
-      expect(result.augend.equals?(five))
-      expect(result.addend.equals?(five))
+      expect(result.augend.equals?(five)).to be_truthy
+      expect(result.addend.equals?(five)).to be_truthy
+    end
+
+    it 'Reduce Sum' do
+      sum = Sum.new(Money.dollar(3), Money.dollar(4))
+      bank = Bank.new
+      result = bank.reduce(sum, 'USD')
+
+      expect(result.equals?(Money.dollar(7))).to be_truthy
     end
   end
 end
