@@ -42,6 +42,10 @@ class Money
     Sum.new(self, addend)
   end
 
+  def reduce(_to)
+    self
+  end
+
   # def currency
   #   # NOTE: 抽象メソッドを自作
   #   currency_proc
