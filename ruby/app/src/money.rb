@@ -1,5 +1,10 @@
 # frozen_string_literal: true
+
+require './expression'
+
 class Money
+  include Expression
+
   attr_reader :amount, :currency
 
   def initialize(amount, currency)

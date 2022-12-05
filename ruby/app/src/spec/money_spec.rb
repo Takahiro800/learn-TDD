@@ -1,6 +1,7 @@
 require './money'
 require './dollar'
 require './franc'
+require './bank'
 
 # TODO: $5 + 10CHF = $10(レートが2:1の場合)
 # TODO: $5 + $5 = $10
@@ -56,9 +57,13 @@ RSpec.describe Money do
   end
 
   describe 'Addition' do
-    it '$5 + $5 = $10' do
-      sum = Money.dollar(5).plus(Money.dollar(5))
-      expect(Money.dollar(10).equals?(sum)).to be_truthy
+    it 'Simple Addition' do
+      five = Money.dollar(5)
+      sum = five.plus(five)
+
+      bank = Bank.new
+      reduced = bank.reduce(sum, 'USD')
+      expect(Money.dollar(10).equals?(reduced)).to be_truthy
     end
   end
 end
