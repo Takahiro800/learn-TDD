@@ -11,4 +11,11 @@ class Sum
     @augend = augend
     @addend = addend
   end
+
+  def reduce(to)
+    raise ArgumentError unless to.instance_of?(String)
+
+    amount = augend.amount + addend.amount
+    Money.new(amount, to)
+  end
 end
