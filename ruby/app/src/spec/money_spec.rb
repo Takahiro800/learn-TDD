@@ -6,6 +6,7 @@ require './bank'
 # TODO: $5 + 10CHF = $10(レートが2:1の場合)
 # TODO: $5 + $5 = $10
 # TODO: $5 + $5 がMoneyを返す
+# TODO Bank.reduce(Money)
 # DONE $5 * 2 = $10
 # DONE amountをprivateにする
 # DONE Dollarの副作用どうする？
@@ -81,6 +82,13 @@ RSpec.describe Money do
       result = bank.reduce(sum, 'USD')
 
       expect(result.equals?(Money.dollar(7))).to be_truthy
+    end
+
+    it 'Reduce Money' do
+      bank = Bank.new
+      result = bank.reduce(Money.dollar(1), 'USD')
+
+      expect(result.equals?(Money.dollar(1))).to be_truthy
     end
   end
 end
