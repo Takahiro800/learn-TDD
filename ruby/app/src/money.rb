@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require './expression'
+require './sum'
 
 class Money
   include Expression
@@ -38,7 +39,7 @@ class Money
   end
 
   def plus(addend)
-    Money.new(amount + addend.amount, currency)
+    Sum.new(self, addend)
   end
 
   # def currency
