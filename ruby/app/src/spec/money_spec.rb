@@ -5,10 +5,10 @@ require './bank'
 
 # TODO: $5 + 10CHF = $10(レートが2:1の場合)
 # TODO: $5 + $5 = $10
-# TODO: $5 + $5 がMoneyを返す
+# DONE: $5 + $5 がMoneyを返す
 # DONE Bank.reduce(Money)
-# TODO Moneyを変換して換算を行う
-# TODO Reduce(Bank, String)
+# DONE Moneyを変換して換算を行う
+# DONE Reduce(Bank, String)
 # DONE $5 * 2 = $10
 # DONE amountをprivateにする
 # DONE Dollarの副作用どうする？
@@ -101,6 +101,18 @@ RSpec.describe Money do
       result = bank.reduce(Money.franc(2), 'USD')
 
       expect(Money.dollar(1).equals?(result)).to be_truthy
+    end
+
+    it 'Identity Rate' do
+      expect(Bank.new.rate('USD', 'USD')).to eq 1
+    end
+
+    # NOTE: originalで追加した
+    it 'Bank#rate' do
+      bank = Bank.new
+      bank.add_rate('USD', 'CHF', 2)
+
+      expect(bank.rate('USD', 'CHF')).to eq 2
     end
   end
 end
