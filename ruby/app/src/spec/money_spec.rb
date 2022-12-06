@@ -77,7 +77,9 @@ RSpec.describe Money do
       expect(result.augend.equals?(five)).to be_truthy
       expect(result.addend.equals?(five)).to be_truthy
     end
+  end
 
+  describe 'Reduce' do
     it 'Reduce Sum' do
       sum = Sum.new(Money.dollar(3), Money.dollar(4))
       bank = Bank.new
@@ -91,6 +93,14 @@ RSpec.describe Money do
       result = bank.reduce(Money.dollar(1), 'USD')
 
       expect(result.equals?(Money.dollar(1))).to be_truthy
+    end
+
+    it 'Reduce Money Different Currency' do
+      bank = Bank.new
+      bank.add_rate('CHF', 'USD', 2)
+      result = bank.reduce(Money.franc(2), 'USD')
+
+      expect(Money.dollar(1).equals?(result)).to be_truthy
     end
   end
 end
