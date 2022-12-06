@@ -6,7 +6,9 @@ require './bank'
 # TODO: $5 + 10CHF = $10(レートが2:1の場合)
 # TODO: $5 + $5 = $10
 # TODO: $5 + $5 がMoneyを返す
-# TODO Bank.reduce(Money)
+# DONE Bank.reduce(Money)
+# TODO Moneyを変換して換算を行う
+# TODO Reduce(Bank, String)
 # DONE $5 * 2 = $10
 # DONE amountをprivateにする
 # DONE Dollarの副作用どうする？
