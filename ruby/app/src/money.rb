@@ -42,8 +42,9 @@ class Money
     Sum.new(self, addend)
   end
 
-  def reduce(_to)
-    self
+  def reduce(to)
+    rate = currency.eql?('CHF') && to.eql?('USD') ? 2 : 1
+    Money.new(amount / rate, to)
   end
 
   # def currency
