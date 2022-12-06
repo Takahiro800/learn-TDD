@@ -42,8 +42,10 @@ class Money
     Sum.new(self, addend)
   end
 
-  def reduce(to)
-    rate = currency.eql?('CHF') && to.eql?('USD') ? 2 : 1
+  def reduce(bank, to)
+    raise ArgumentError unless bank.instance_of?(Bank)
+
+    rate = bank.rate(currency, to)
     Money.new(amount / rate, to)
   end
 

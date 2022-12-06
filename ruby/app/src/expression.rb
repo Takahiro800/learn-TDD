@@ -1,5 +1,5 @@
 # frozen_string_literal: true
 
 module Expression
-  def reduce(to); end
+  def reduce(bank, to); end
 end

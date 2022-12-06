@@ -12,7 +12,7 @@ class Sum
     @addend = addend
   end
 
-  def reduce(to)
+  def reduce(_bank, to)
     raise ArgumentError unless to.instance_of?(String)
 
     amount = augend.amount + addend.amount
