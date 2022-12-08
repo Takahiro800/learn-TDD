@@ -77,6 +77,17 @@ RSpec.describe Money do
       expect(result.augend.equals?(five)).to be_truthy
       expect(result.addend.equals?(five)).to be_truthy
     end
+
+    it 'Mixed Addtion' do
+      five_bucks = Money.dollar(5)
+      ten_francs = Money.franc(10)
+      bank = Bank.new
+      bank.add_rate('CHF', 'USD', 2)
+      result = bank.reduce(five_bucks.plus(ten_francs), 'USD')
+
+      p result
+      expect(result.equals?(Money.dollar(10))).to be_truthy
+    end
   end
 
   describe 'Reduce' do
