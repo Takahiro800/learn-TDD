@@ -85,7 +85,6 @@ RSpec.describe Money do
       bank.add_rate('CHF', 'USD', 2)
       result = bank.reduce(five_bucks.plus(ten_francs), 'USD')
 
-      p result
       expect(result.equals?(Money.dollar(10))).to be_truthy
     end
   end
