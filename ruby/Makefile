@@ -4,3 +4,6 @@ init:
 
 rspec:
 	docker compose exec ruby rspec
+
+run xunit:
+	docker compose exec xunit ruby xunit.rb

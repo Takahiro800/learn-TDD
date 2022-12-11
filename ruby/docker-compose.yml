@@ -10,3 +10,13 @@ services:
     tty: true
     volumes:
       - ./app:/root/app
+  xunit:
+    container_name: 'xunit'
+    restart: always
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    working_dir: '/root/xunit'
+    tty: true
+    volumes:
+      - ./xunit:/root/xunit
