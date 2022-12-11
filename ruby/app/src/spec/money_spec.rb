@@ -4,7 +4,7 @@ require './franc'
 require './bank'
 
 # TODO: $5 + 10CHF = $10(レートが2:1の場合)
-# TODO: $5 + $5 = $10
+# DONE: $5 + $5 = $10
 # DONE: $5 + $5 がMoneyを返す
 # DONE Bank.reduce(Money)
 # DONE Moneyを変換して換算を行う
