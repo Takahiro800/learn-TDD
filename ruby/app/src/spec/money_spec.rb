@@ -3,12 +3,14 @@ require './dollar'
 require './franc'
 require './bank'
 
-# TODO: $5 + 10CHF = $10(レートが2:1の場合)
+# DONE: $5 + 10CHF = $10(レートが2:1の場合)
 # DONE: $5 + $5 = $10
 # DONE: $5 + $5 がMoneyを返す
 # DONE Bank.reduce(Money)
 # DONE Moneyを変換して換算を行う
 # DONE Reduce(Bank, String)
+# DONE Sum.plus
+# TODO Expression.time
 # DONE $5 * 2 = $10
 # DONE amountをprivateにする
 # DONE Dollarの副作用どうする？
@@ -41,6 +43,20 @@ RSpec.describe Money do
 
       expect(five.times(2).equals?(Money.franc(10))).to be_truthy
       expect(five.times(3).equals?(Money.franc(15))).to be_truthy
+    end
+
+    it 'Sum Times' do
+      five_bucks = Money.dollar(5)
+      ten_francs = Money.franc(10)
+      bank = Bank.new
+      bank.add_rate('CHF', 'USD', 2)
+      sum = Sum.new(five_bucks, ten_francs).times(2)
+      result = bank.reduce(sum, 'USD')
+      p sum
+      p result
+
+      expect(Money.dollar(20).equals?(result)).to be_truthy
+      # NOTE: 実装よりテストが長くなった。p.227を確認する
     end
   end
 
