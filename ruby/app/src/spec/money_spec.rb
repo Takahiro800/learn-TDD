@@ -87,6 +87,18 @@ RSpec.describe Money do
 
       expect(result.equals?(Money.dollar(10))).to be_truthy
     end
+
+    it 'Sum plus Money' do
+      five_buckes = Money.dollar(5)
+      ten_frances = Money.franc(10)
+
+      bank = Bank.new
+      bank.add_rate('CHF', 'USD', 2)
+      sum = Sum.new(five_buckes, ten_frances).plus(five_buckes)
+      result = bank.reduce(sum, 'USD')
+
+      expect(Money.dollar(15).equals?(result)).to be_truthy
+    end
   end
 
   describe 'Reduce' do
