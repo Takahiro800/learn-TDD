@@ -6,6 +6,15 @@
 # TODO 収集したテスト結果を出力する
 
 class WasRun
+  attr_accessor :was_run
+
+  def initialize(_name)
+    @was_run = nil
+  end
+
+  def test_method
+    self.was_run = 1
+  end
 end
 
 test = WasRun.new('test_method')
