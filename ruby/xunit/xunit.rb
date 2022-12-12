@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 # DONE: テストメソッドを呼び出す
-# TODO set_upを最初に呼び出す
+# DONE set_upを最初に呼び出す
 # TODO tear_downを後で呼び出す
 # TODO テストメソッドが失敗したとしてもtear_downを呼び出す
 # TODO 複数のテストを呼び出す
@@ -40,16 +40,19 @@ class WasRun < TestCase
 end
 
 class TestCaseTest < TestCase
+  attr_accessor :test
+
+  def set_up
+    @test = WasRun.new('test_method')
+  end
+
   def test_running
-    test = WasRun.new('test_method')
     test.run
     raise 'Assertion Error' unless test.was_run
   end
 
   def test_set_up
-    test = WasRun.new('test_method')
     test.run
-
     raise 'Assertion Error' unless test.was_set_up
   end
 end
