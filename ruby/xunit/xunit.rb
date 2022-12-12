@@ -19,7 +19,10 @@ class WasRun
   end
 
   def run
+    # NOTE: Pluggable Selector パターン
+    # [Pluggable Selector - Ruby Patterns](https://rubypatterns.dev/general/pluggable_selector.html)
     test_method
+    send(@name)
   end
 end
 
