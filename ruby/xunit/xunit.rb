@@ -30,8 +30,8 @@ class WasRun < TestCase
   attr_accessor :was_set_up
 
   def test_method
+    self.was_run = nil
     self.was_run = 1
-    # was_run
   end
 
   def set_up
@@ -42,8 +42,6 @@ end
 class TestCaseTest < TestCase
   def test_running
     test = WasRun.new('test_method')
-    raise 'Assertion Error' if test.was_run
-
     test.run
     raise 'Assertion Error' unless test.was_run
   end
