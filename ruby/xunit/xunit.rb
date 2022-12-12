@@ -15,18 +15,27 @@ class TestCase
     @name = name
   end
 
+  def set_up; end
+
   def run
     # NOTE: Pluggable Selector パターン
     # [Pluggable Selector - Ruby Patterns](https://rubypatterns.dev/general/pluggable_selector.html)
     # method = send(name)
+    set_up
     send(@name)
   end
 end
 
 class WasRun < TestCase
+  attr_accessor :was_set_up
+
   def test_method
     self.was_run = 1
-    was_run
+    # was_run
+  end
+
+  def set_up
+    self.was_set_up = 1
   end
 end
 
@@ -38,6 +47,13 @@ class TestCaseTest < TestCase
     test.run
     raise 'Assertion Error' unless test.was_run
   end
+
+  def test_set_up
+    test = WasRun.new('test_method')
+    test.run
+
+    raise 'Assertion Error' unless test.was_set_up
+  end
 end
 
 test = WasRun.new('test_method')
@@ -46,3 +62,4 @@ test.run
 puts test.was_run
 
 TestCaseTest.new('test_running').run
+TestCaseTest.new('test_set_up').run
