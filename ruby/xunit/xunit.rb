@@ -8,16 +8,22 @@
 class WasRun
   attr_accessor :was_run
 
-  def initialize(_name)
-    @was_run = nil
+  def initialize(name)
+    @was_run = 'None'
+    @name = name
   end
 
   def test_method
     self.was_run = 1
+    was_run
+  end
+
+  def run
+    test_method
   end
 end
 
 test = WasRun.new('test_method')
 puts test.was_run
-test.test_method
+test.run
 puts test.was_run
