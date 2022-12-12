@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-# TODO: テストメソッドを呼び出す
+# DONE: テストメソッドを呼び出す
 # TODO set_upを最初に呼び出す
 # TODO tear_downを後で呼び出す
 # TODO テストメソッドが失敗したとしてもtear_downを呼び出す
@@ -8,17 +8,17 @@
 # TODO 収集したテスト結果を出力する
 
 class TestCase
-  attr_accessor :was_run
+  attr_accessor :was_run, :name
 
   def initialize(name)
-    @was_run = 'None'
+    @was_run = nil
     @name = name
   end
 
   def run
     # NOTE: Pluggable Selector パターン
     # [Pluggable Selector - Ruby Patterns](https://rubypatterns.dev/general/pluggable_selector.html)
-    test_method
+    # method = send(name)
     send(@name)
   end
 end
@@ -30,7 +30,19 @@ class WasRun < TestCase
   end
 end
 
+class TestCaseTest < TestCase
+  def test_running
+    test = WasRun.new('test_method')
+    raise 'Assertion Error' if test.was_run
+
+    test.run
+    raise 'Assertion Error' unless test.was_run
+  end
+end
+
 test = WasRun.new('test_method')
 puts test.was_run
 test.run
 puts test.was_run
+
+TestCaseTest.new('test_running').run
