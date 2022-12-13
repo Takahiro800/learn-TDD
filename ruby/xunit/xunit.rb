@@ -6,6 +6,7 @@
 # TODO テストメソッドが失敗したとしてもtear_downを呼び出す
 # TODO 複数のテストを呼び出す
 # TODO 収集したテスト結果を出力する
+# TODO WasRunで文字列をログに記録する
 
 class TestCase
   attr_accessor :was_run, :name
@@ -27,15 +28,16 @@ class TestCase
 end
 
 class WasRun < TestCase
-  attr_accessor :was_set_up
-
-  def test_method
-    self.was_run = nil
-    self.was_run = 1
-  end
+  attr_accessor :was_set_up, :log
 
   def set_up
+    self.was_run = nil
     self.was_set_up = 1
+  end
+
+  def test_method
+    self.was_run = 1
+    self.log = 'set_up'
   end
 end
 
@@ -53,7 +55,7 @@ class TestCaseTest < TestCase
 
   def test_set_up
     test.run
-    raise 'Assertion Error' unless test.was_set_up
+    raise 'Assertion Error' unless 'set_up' == test.log
   end
 end
 
